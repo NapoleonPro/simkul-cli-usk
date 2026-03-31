@@ -42,8 +42,8 @@ def _tampilkan_tabel(judul: str, jadwal: list[dict]):
 
     for mk in jadwal:
         table.add_row(
-            mk.get("pertemuan", "-"),
-            mk.get("tanggal", "-"),
+            str(mk.get("pertemuan", "-")),
+            mk.get("tanggal_str", "-"),
             mk.get("nama_mk", "-"),
             mk.get("jam", "-"),
             mk.get("ruang", "-"),

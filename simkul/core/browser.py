@@ -31,15 +31,21 @@ def create_wait(driver: webdriver.Chrome, timeout: int = 10) -> WebDriverWait:
 
 def inject_cookies(driver: webdriver.Chrome, cookies: list):
     """Inject cookies ke driver."""
-    driver.get(BASE_URL)
+    # Buka halaman login dulu supaya domain cocok
+    driver.get(f"{BASE_URL}/index.php/login")
     time.sleep(2)
+
+    # Hapus semua cookie yang ada (termasuk guest session dari server)
+    driver.delete_all_cookies()
+
     for cookie in cookies:
         try:
             cookie.pop("sameSite", None)
             driver.add_cookie(cookie)
         except Exception as e:
             pass
-    # Navigate ulang setelah inject
+
+    # Baru navigate ke BASE_URL dengan cookie login yang bersih
     driver.get(BASE_URL)
     time.sleep(2)
 
