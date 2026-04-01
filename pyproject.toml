@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "simkul-cli"
 version = "0.1.0"
-description = "Literally absen simkul cuma lewat terminal, ga lebih. hehe"
+description = "Literally cuma simkul tapi cli, ga lebih. hehe"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
