@@ -75,7 +75,7 @@ def jadwal(
         raise typer.Exit()
 
     cache = load_jadwal_cache()
-    print("DEBUG cache:", type(cache), len(cache) if cache else None)
+    
 
     if cache and not refresh:
         # STOP DI SINI — jangan buka browser sama sekali

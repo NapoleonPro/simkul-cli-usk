@@ -11,15 +11,11 @@ BASE_URL = "https://simkuliah.usk.ac.id"
 WIB = ZoneInfo("Asia/Jakarta")
 
 
-# ─────────────────────────────────────────
-# HELPER: PARSE SEL PERTEMUAN
-# ─────────────────────────────────────────
+
 
 def _parse_sel_pertemuan(sel_text: str, kode_mk: str, nama_mk: str, nomor_pertemuan: int) -> dict | None:
-    """
-    Parse teks dalam satu sel pertemuan menjadi dict.
-    Return None kalau sel kosong.
-    """
+
+    
     if not sel_text.strip():
         return None
 
@@ -63,9 +59,7 @@ def _parse_sel_pertemuan(sel_text: str, kode_mk: str, nama_mk: str, nomor_pertem
     return hasil
 
 
-# ─────────────────────────────────────────
-# JADWAL SEMESTER
-# ─────────────────────────────────────────
+
 
 def get_jadwal_semester(driver) -> list[dict]:
     """
@@ -109,29 +103,19 @@ def get_jadwal_semester(driver) -> list[dict]:
     return hasil
 
 
-# ─────────────────────────────────────────
-# JADWAL AKTIF HARI INI
-# ─────────────────────────────────────────
+
 
 def get_jadwal_aktif_hari_ini(jadwal_semester: list[dict]) -> list[dict]:
     hari_ini = datetime.now(WIB).date()
-    print("DEBUG hari ini:", hari_ini)
-    print("DEBUG sample tanggal dari cache:", [mk.get("tanggal") for mk in jadwal_semester[:5]])
     
     return [
         mk for mk in jadwal_semester
         if mk.get("tanggal") == hari_ini
     ]
 
-# ─────────────────────────────────────────
-# ABSENSI
-# ─────────────────────────────────────────
 
 def do_absen(driver) -> dict:
-    """
-    Navigasi ke halaman absensi dan klik semua tombol absen yang tersedia.
-    Return dict berisi status dan jumlah absen yang berhasil.
-    """
+ 
     driver.get(f"{BASE_URL}/index.php/absensi")
     time.sleep(2)
 

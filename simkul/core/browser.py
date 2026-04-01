@@ -52,5 +52,4 @@ def inject_cookies(driver: webdriver.Chrome, cookies: list):
 def is_session_valid(driver: webdriver.Chrome) -> bool:
     """Cek apakah session masih valid — cukup cek URL sekarang."""
     current = driver.current_url.lower()
-    print("DEBUG is_session_valid URL:", current)
     return "login" not in current
