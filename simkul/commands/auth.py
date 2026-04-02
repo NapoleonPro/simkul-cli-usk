@@ -47,10 +47,10 @@ def login():
         driver.find_element(By.NAME, "password").send_keys(password)
 
         # Solve CAPTCHA
-        console.print("[dim]Menyelesaikan CAPTCHA...[/dim]")
+        console.print('[dim]solve CAPTCHA"an  ...[/dim]')
         captcha_bytes = get_captcha_image(driver)
         captcha_text = solve_captcha(captcha_bytes)
-        console.print(f"[dim]CAPTCHA terbaca: {captcha_text}[/dim]")
+        console.print(f"[dim]CAPTCHA : {captcha_text}[/dim]")
 
         # Isi field CAPTCHA
         driver.find_element(By.NAME, "captcha_answer").send_keys(captcha_text)
